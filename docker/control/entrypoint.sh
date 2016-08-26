@@ -44,7 +44,7 @@ child=$!
 
 # Get config api servers from discovery
 
-DISCOVERY_SERVER=$(retry check_url config $DISCOVERY_SERVER $DISCOVERY_PORT)
+DISCOVERY_SERVER=$(retry get_right_ip config $DISCOVERY_SERVER $DISCOVERY_PORT)
 
 api_servers=$(get_service_connect_details http://${DISCOVERY_SERVER}:${DISCOVERY_PORT}/services.json ApiServer)
 first_api_server=$(echo $api_servers | awk '{print $1}')

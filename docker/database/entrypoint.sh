@@ -47,8 +47,8 @@ setup_vnc_api_lib
 
 $DAEMON $DAEMON_OPTS 2>&1 | tee -a $LOG &
 child=$!
-# Wait for config api
-CFGM_IP=$(retry check_url config $CFGM_IP $CONFIG_API_PORT)
+
+CFGM_IP=$(retry get_right_ip config ${CFGM_IP:-$IPADDRESS} $CONFIG_API_PORT)
 
 # Register database in config
 retry /usr/share/contrail-utils/provision_database_node.py --api_server_ip $CFGM_IP \

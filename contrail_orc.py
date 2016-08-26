@@ -431,8 +431,8 @@ def get_apmq_roles():
 def setup_config(docker_images, contrail_version, openstack_sku):
     env_vars_common = []
     amqp_roles = get_apmq_roles()
-    if not get_from_testbed_dict('cfgm', 'amqp_hosts', None):
-        env_vars_common.append("ENABLE_RABBITMQ=yes")
+    if get_from_testbed_dict('cfgm', 'amqp_hosts', None):
+        env_vars_common.append("DISABLE_RABBITMQ=yes")
 
     # Disable iptables on amqp_roles - this is copied from contrail-fabric-utils rabbitmq.allow_rabbitmq_port()
     execute('disable_iptables', roles=amqp_roles)

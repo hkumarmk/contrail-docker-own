@@ -5,7 +5,7 @@ ARG ENTRY_POINT=docker_entrypoint.sh
 ARG SSHPASS
 ARG DEBIAN_FRONTEND=noninteractive
 ENV SKU=liberty
-ARG PACKAGES_CONTRAIL_CONTROL="contrail-openstack-control crudini jq"
+    ARG PACKAGES_CONTRAIL_CONTROL="contrail-openstack-control crudini jq"
 
 RUN wget -q --spider $CONTRAIL_INSTALL_PACKAGE_URL
 
